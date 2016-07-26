@@ -20,6 +20,12 @@ import java.util.List;
  */
 public class MovieArrayAdaptor extends ArrayAdapter<Movie> {
 
+    public  enum LayOutTypes
+    {
+        PopularMovie,
+        RegularMovie
+    }
+
     private static class ViewHolder
     {
         TextView txtViewTitle;
@@ -41,12 +47,26 @@ public class MovieArrayAdaptor extends ArrayAdapter<Movie> {
 
     @Override
     public int getItemViewType(int position) {
-        return super.getItemViewType(position);
+
+        Movie movie = getItem(position);
+        int type;
+
+        if(((int) movie.getVoteAverage()) >5)
+        {
+            type = LayOutTypes.PopularMovie.ordinal();
+        }
+        else
+        {
+            type = LayOutTypes.RegularMovie.ordinal();
+        }
+
+        return  type;
     }
+
 
     @Override
     public int getViewTypeCount() {
-        return super.getViewTypeCount();
+        return LayOutTypes.values().length;
     }
 
 
@@ -62,15 +82,17 @@ public class MovieArrayAdaptor extends ArrayAdapter<Movie> {
         viewHolder = new ViewHolder();
         viewHolderPopular = new ViewHolderPopular();
 
+        int type = getItemViewType(position);
+
         // check if existing view being reused
 
-       //if(convertView == null)
+       if(convertView == null)
         {
-           // int type = getItemViewType(position);
+
 
             LayoutInflater inflater = LayoutInflater.from(getContext());
 
-            if (((int) movie.getVoteAverage()) >5)
+            if (type == 0)
             {
 
                 convertView = inflater.inflate(R.layout.movie_popular, parent, false);
@@ -80,7 +102,7 @@ public class MovieArrayAdaptor extends ArrayAdapter<Movie> {
                 convertView.setTag(viewHolderPopular);
 
             }
-            else if(((int) movie.getVoteAverage()) <=5)
+            else if(type == 1)
             {
                 convertView = inflater.inflate(R.layout.movie_item, parent, false);
 
@@ -95,19 +117,18 @@ public class MovieArrayAdaptor extends ArrayAdapter<Movie> {
             }
 
         }
-     /*  else
+      else
         {
-            if (((int) movie.getVoteAverage()) >5) {
-                viewHolderPopular = (ViewHolderPopular) convertView.getTag(1);
-
+            if (type == 0) {
+                viewHolderPopular = (ViewHolderPopular) convertView.getTag();
             }
-            else if(((int) movie.getVoteAverage()) <=5)
+            else if(type ==1)
             {
-                viewHolder = (ViewHolder) convertView.getTag(2);
+                viewHolder = (ViewHolder) convertView.getTag();
             }
 
         }
-        */
+
 
 
        // viewHolder.txtViewTitle.setText(movie.getOriginalTitle().toString());
@@ -118,13 +139,13 @@ public class MovieArrayAdaptor extends ArrayAdapter<Movie> {
         // with placeholder
         if(orientation == Configuration.ORIENTATION_PORTRAIT) {
             //Picasso.with(this.getContext()).load(movie.getPosterPath()).into(viewHolder.imgView);
-            if( ((int) movie.getVoteAverage())>5)
+            if(type == 0)
             {
-                Picasso.with(this.getContext()).load(movie.getBackdropPath()).placeholder(R.mipmap.ic_movie_placeholder_error)
+                Picasso.with(this.getContext()).load(movie.getBackdropPath()).centerCrop().resize(780,450).placeholder(R.mipmap.ic_movie_placeholder_error)
                         .error(R.mipmap.ic_movie_placeholder_error).into(viewHolderPopular.imgPopular);
 
             }
-            else if(((int) movie.getVoteAverage()) <=5) {
+            else if(type == 1) {
                  viewHolder.txtViewTitle.setText(movie.getOriginalTitle().toString());
                  viewHolder.txtViewOverview.setText(movie.getOverview().toString());
 
@@ -134,13 +155,13 @@ public class MovieArrayAdaptor extends ArrayAdapter<Movie> {
         }
         else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
             // Picasso.with(this.getContext()).load(movie.getBackdropPath()).into(viewHolder.imgView);
-            if( ((int) movie.getVoteAverage())>5)
+            if(type == 0)
             {
-                Picasso.with(this.getContext()).load(movie.getBackdropPath()).placeholder(R.mipmap.ic_movie_placeholder_error)
+                Picasso.with(this.getContext()).load(movie.getBackdropPath()).centerCrop().resize(1200,1000).placeholder(R.mipmap.ic_movie_placeholder_error)
                         .error(R.mipmap.ic_movie_placeholder_error).into(viewHolderPopular.imgPopular);
 
             }
-            else if(((int) movie.getVoteAverage()) <=5) {
+            else if(type == 1) {
 
                 viewHolder.txtViewTitle.setText(movie.getOriginalTitle().toString());
                 viewHolder.txtViewOverview.setText(movie.getOverview().toString());

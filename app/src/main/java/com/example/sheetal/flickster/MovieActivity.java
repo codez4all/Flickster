@@ -69,13 +69,25 @@ public class MovieActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intentRating = new Intent(MovieActivity.this,RatingActivity.class);
+
                 Movie movie= (Movie) lvItems.getItemAtPosition(position);
 
-                intentRating.putExtra("voteAverage",movie.getVoteAverage());
-                intentRating.putExtra("popularity",movie.getPopularity());
-                intentRating.putExtra("hasVideo",movie.getVideo());
-                startActivity(intentRating);
+                if(((int) movie.getVoteAverage())> 5)
+                {
+                    Intent intentPlayer = new Intent(MovieActivity.this, QuickPlayActivity.class);
+                    startActivity(intentPlayer);
+                }
+                else {
+
+                    Intent intentRating = new Intent(MovieActivity.this, RatingActivity.class);
+                    intentRating.putExtra("id",movie.getId());
+                    intentRating.putExtra("voteAverage", movie.getVoteAverage());
+                    intentRating.putExtra("popularity", movie.getPopularity());
+                    intentRating.putExtra("hasVideo", movie.getVideo());
+                    intentRating.putExtra("synopsis",movie.getOverview());
+                    startActivity(intentRating);
+                }
+
             }
         });
     }
@@ -105,6 +117,7 @@ public class MovieActivity extends AppCompatActivity
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
+                Log.d("failed JSON array ","");
             }
         });
     }

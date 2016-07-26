@@ -11,7 +11,9 @@ import java.util.ArrayList;
  */
 public class Movie {
 
-
+    public String getId() {
+        return id;
+    }
 
     public String getPosterPath() {
         return String.format("https://image.tmdb.org/t/p/w342/%s", posterPath);
@@ -41,6 +43,7 @@ public class Movie {
         return hasVideo;
     }
 
+    public String id;
     public String posterPath;
     public String originalTitle;
     public String overview;
@@ -51,7 +54,7 @@ public class Movie {
 
     public Movie(JSONObject movieJsonObj) throws JSONException
     {
-
+            this.id = movieJsonObj.getString("id");
             this.posterPath = movieJsonObj.getString("poster_path");
             this.originalTitle = movieJsonObj.getString("original_title");
             this.overview = movieJsonObj.getString("overview");
