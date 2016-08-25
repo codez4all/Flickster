@@ -1,5 +1,6 @@
 package com.example.sheetal.flickster;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -16,6 +17,9 @@ public class QuickPlayActivity extends YouTubeBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quick_play);
 
+        Intent intent = getIntent();
+        final String id = intent.getStringExtra("id");
+
         YouTubePlayerView youTubePlayerView = (YouTubePlayerView)findViewById(R.id.player);
 
         youTubePlayerView.initialize("AIzaSyAkRl_3AQSMKeczZWieReo6JhglolvsmOg",
@@ -25,7 +29,7 @@ public class QuickPlayActivity extends YouTubeBaseActivity {
                                                         YouTubePlayer youTubePlayer, boolean b) {
 
                         // do any work here to cue video, play video, etc.
-                        youTubePlayer.cueVideo("6as8ahAr1Uc");
+                        youTubePlayer.cueVideo(id);
                     }
 
                     @Override

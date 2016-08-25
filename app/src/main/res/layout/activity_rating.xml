@@ -9,39 +9,62 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.sheetal.flickster.RatingActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/simple_grey"
+    android:paddingStart="@dimen/activity_vertical_margin"
+    android:paddingEnd="@dimen/activity_horizontal_margin">
 
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/playerOnDetail"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></com.google.android.youtube.player.YouTubePlayerView>
+        android:layout_height="wrap_content"
+        android:background="@color/simple_grey">
+    </com.google.android.youtube.player.YouTubePlayerView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvTitle"
+        android:text="@string/tvTitleText"
+        android:layout_alignParentTop="true"
+        android:layout_below="@id/playerOnDetail"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:background="@color/simple_grey"
+        android:paddingTop="@dimen/item_paddingTop"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id= "@+id/tvReleaseDate"
+        android:text="@string/tvReleaseDateText"
+        android:layout_below="@id/tvTitle"
+        android:background="@color/simple_grey"
+        android:paddingTop="@dimen/item_paddingTop"/>
 
 
     <RatingBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/rtBar"
-        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/playerOnDetail"/>
+        android:layout_below="@+id/tvReleaseDate"
+        android:background="@color/simple_grey"
+        android:paddingTop="@dimen/item_paddingTop"/>
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tvPopularityText"
-        android:id="@+id/tvPopularity"
-        android:layout_centerHorizontal="false"
-        android:layout_below="@+id/rtBar"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="@string/tvSynopsisText"
         android:id="@+id/tvSynopsis"
         android:layout_below="@+id/tvPopularity"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="36dp"/>
+        android:background="@color/simple_grey"
+        android:paddingTop="@dimen/item_paddingTop"
+        android:textSize="@dimen/textView_fontSize"
+        android:fontFamily="Arial"
+        android:textStyle="italic"
+     />
 
 
 </LinearLayout>

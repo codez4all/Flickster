@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Flickster</string>
     <string name="tvPopularityText">Popularity</string>
+    <string name="tvTitleText">Title</string>
+    <string name="tvReleaseDateText">Release Date</string>
+    <string name="tvSynopsisText">Overview</string>
+
 </resources>

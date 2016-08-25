@@ -75,16 +75,19 @@ public class MovieActivity extends AppCompatActivity
                 if(((int) movie.getVoteAverage())> 5)
                 {
                     Intent intentPlayer = new Intent(MovieActivity.this, QuickPlayActivity.class);
+                    intentPlayer.putExtra("id",movie.getId());
                     startActivity(intentPlayer);
                 }
                 else {
 
                     Intent intentRating = new Intent(MovieActivity.this, RatingActivity.class);
                     intentRating.putExtra("id",movie.getId());
+                    intentRating.putExtra("title",movie.getOriginalTitle());
                     intentRating.putExtra("voteAverage", movie.getVoteAverage());
                     intentRating.putExtra("popularity", movie.getPopularity());
-                    intentRating.putExtra("hasVideo", movie.getVideo());
+                    intentRating.putExtra("hasVideo", movie.getHasVideo());
                     intentRating.putExtra("synopsis",movie.getOverview());
+                    intentRating.putExtra("release_date",movie.getRelease_date());
                     startActivity(intentRating);
                 }
 

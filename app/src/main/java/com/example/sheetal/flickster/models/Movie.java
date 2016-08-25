@@ -39,18 +39,24 @@ public class Movie {
         return voteAverage;
     }
 
-    public String getVideo() {
+    public String getHasVideo() {
         return hasVideo;
     }
 
-    public String id;
-    public String posterPath;
-    public String originalTitle;
-    public String overview;
-    public String backdropPath;
-    public String popularity;
-    public Double voteAverage;
-    public String hasVideo;
+    public String getRelease_date() {
+        return release_date;
+    }
+
+    private String id;
+    private String posterPath;
+    private String originalTitle;
+    private String overview;
+    private String backdropPath;
+    private String popularity;
+    private Double voteAverage;
+    private String hasVideo;
+    private String release_date;
+
 
     public Movie(JSONObject movieJsonObj) throws JSONException
     {
@@ -62,6 +68,7 @@ public class Movie {
             this.popularity = movieJsonObj.getString("popularity");
             this.voteAverage = movieJsonObj.getDouble("vote_average");
             this.hasVideo = movieJsonObj.getString("video");
+            this.release_date = movieJsonObj.getString("release_date");
 
     }
 

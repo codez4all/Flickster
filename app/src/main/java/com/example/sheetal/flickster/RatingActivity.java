@@ -25,24 +25,40 @@ public class RatingActivity extends YouTubeBaseActivity {
     JSONArray videoJsonResult = null;
     String source;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating);
 
-
-        TextView tvPopularity = (TextView)findViewById(R.id.tvPopularity);
+        TextView tvTitle = (TextView) findViewById(R.id.tvTitle);
+        TextView tvReleaseDate = (TextView) findViewById(R.id.tvReleaseDate);
         RatingBar rtBar = (RatingBar)findViewById(R.id.rtBar);
         TextView tvSynopsis = (TextView) findViewById(R.id.tvSynopsis);
 
         Intent intent = getIntent();
 
         String id = intent.getStringExtra("id");
+        String title = intent.getStringExtra("title");
         Double voteAverage = intent.getDoubleExtra("voteAverage", 0.0);
         String popularity = intent.getStringExtra("popularity");
         String hasVideo = intent.getStringExtra("hasVideo");
         String synopsis = intent.getStringExtra("synopsis");
+        String release_date = "Release Date: "+ intent.getStringExtra("release_date");
 
+
+        showVideo(id);
+
+        tvTitle.setText(title);
+        tvReleaseDate.setText(release_date);
+        rtBar.setRating(voteAverage.floatValue());
+        tvSynopsis.setText(synopsis);
+
+    }
+
+
+    public void showVideo(String id)
+    {
         String url = "https://api.themoviedb.org/3/movie/"+id+"/trailers?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
 
         client = new AsyncHttpClient();
@@ -62,27 +78,27 @@ public class RatingActivity extends YouTubeBaseActivity {
 
                     }
 
-                    if(source !=null) {
+                    if (source != null) {
 
                         YouTubePlayerView playerOnDetailView = (YouTubePlayerView) findViewById(R.id.playerOnDetail);
-                            playerOnDetailView.initialize("AIzaSyAkRl_3AQSMKeczZWieReo6JhglolvsmOg",
-                        new YouTubePlayer.OnInitializedListener() {
-                            @Override
-                            public void onInitializationSuccess(YouTubePlayer.Provider provider,
-                                                                YouTubePlayer youTubePlayer, boolean b) {
+                        playerOnDetailView.initialize("AIzaSyAkRl_3AQSMKeczZWieReo6JhglolvsmOg",
+                                new YouTubePlayer.OnInitializedListener() {
+                                    @Override
+                                    public void onInitializationSuccess(YouTubePlayer.Provider provider,
+                                                                        YouTubePlayer youTubePlayer, boolean b) {
 
-                                // do any work here to cue video, play video, etc.
-                                youTubePlayer.cueVideo(source);
-                                // youTubePlayer.cueVideo(videoJsonResult.getJSONArray);
-                            }
+                                        // do any work here to cue video, play video, etc.
+                                        youTubePlayer.cueVideo(source);
+                                        // youTubePlayer.cueVideo(videoJsonResult.getJSONArray);
+                                    }
 
-                            @Override
-                            public void onInitializationFailure(YouTubePlayer.Provider provider,
-                                                                YouTubeInitializationResult youTubeInitializationResult) {
-                                Log.d("Video Failed", "");
-                            }
-                    });
-                     }
+                                    @Override
+                                    public void onInitializationFailure(YouTubePlayer.Provider provider,
+                                                                        YouTubeInitializationResult youTubeInitializationResult) {
+                                        Log.d("Video Failed", "");
+                                    }
+                                });
+                    }
 
                     Log.d("Debug", videoJsonResult.toString());
 
@@ -100,32 +116,7 @@ public class RatingActivity extends YouTubeBaseActivity {
 
         });
 
-        rtBar.setRating(voteAverage.floatValue());
-        tvPopularity.setText(popularity);
-        tvSynopsis.setText(synopsis);
-
-        /*if(source !=null) {
-
-            YouTubePlayerView playerOnDetailView = (YouTubePlayerView) findViewById(R.id.playerOnDetail);
-
-            playerOnDetailView.initialize("AIzaSyAkRl_3AQSMKeczZWieReo6JhglolvsmOg",
-                    new YouTubePlayer.OnInitializedListener() {
-                        @Override
-                        public void onInitializationSuccess(YouTubePlayer.Provider provider,
-                                                            YouTubePlayer youTubePlayer, boolean b) {
-
-                            // do any work here to cue video, play video, etc.
-                            youTubePlayer.cueVideo(source);
-                            // youTubePlayer.cueVideo(videoJsonResult.getJSONArray);
-                        }
-
-                        @Override
-                        public void onInitializationFailure(YouTubePlayer.Provider provider,
-                                                            YouTubeInitializationResult youTubeInitializationResult) {
-                            Log.d("Video Failed", "");
-                        }
-                    });
-        }*/
 
     }
 }
+
