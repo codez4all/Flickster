@@ -40,6 +40,8 @@
         android:layout_below="@+id/tvTitle"
         android:layout_toRightOf="@+id/ivImage"
         android:layout_centerInParent="false"
+        android:lines="4"
+        android:ellipsize="end"
         android:textSize="@dimen/textView_fontSize"/>
 
 </RelativeLayout>

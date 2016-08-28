@@ -11,8 +11,9 @@
     tools:context="com.example.sheetal.flickster.QuickPlayActivity">
 
     <com.google.android.youtube.player.YouTubePlayerView
-        android:id="@+id/player"
+        android:id="@+id/playerOnDetail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
 
 </RelativeLayout>
