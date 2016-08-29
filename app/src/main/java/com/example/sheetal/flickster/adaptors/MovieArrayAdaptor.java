@@ -149,7 +149,7 @@ public class MovieArrayAdaptor extends ArrayAdapter<Movie> {
                         .into(viewHolderPopular.imgPopular);
 
             }
-            else if(type == LayOutTypes.PopularMovie.ordinal()) {
+            else if(type == 1) {
                  viewHolder.txtViewTitle.setText(movie.getOriginalTitle().toString());
                  viewHolder.txtViewOverview.setText(movie.getOverview().toString());
 
@@ -165,6 +165,8 @@ public class MovieArrayAdaptor extends ArrayAdapter<Movie> {
             // Picasso.with(this.getContext()).load(movie.getBackdropPath()).into(viewHolder.imgView);
             if(type == 0)
             {
+                viewHolderPopular.imgPopular.getLayoutParams().height = 300;
+
                 Picasso.with(this.getContext())
                         .load(movie.getBackdropPath())
                         .fit()

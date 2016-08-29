@@ -8,11 +8,14 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    android:paddingBottom="16dp">
+    android:paddingBottom="16dp"
+    android:background="@color/simple_grey">
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lvMovies"/>
+        android:id="@+id/lvMovies"
+        android:divider="@color/simple_white"
+        android:dividerHeight="0dp"/>
 
 </android.support.v4.widget.SwipeRefreshLayout>
