@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.sheetal.flickster.RatingActivity"
+    tools:context=".DetailActivity"
     android:orientation="vertical"
     android:background="@color/simple_grey"
     android:paddingStart="@dimen/activity_vertical_margin"
@@ -48,8 +48,9 @@
         android:id="@+id/rtBar"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/tvReleaseDate"
-        android:background="@color/simple_grey"
-        android:paddingTop="@dimen/item_paddingTop"/>
+        style="?android:attr/ratingBarStyleSmall"
+        android:isIndicator="true"
+        android:progressTint="@color/yellow"/>
 
 
     <TextView
@@ -60,10 +61,10 @@
         android:layout_below="@+id/tvPopularity"
         android:layout_alignParentStart="true"
         android:background="@color/simple_grey"
-        android:paddingTop="@dimen/item_paddingTop"
+        android:textColor="@color/grey"
+        android:paddingTop="10dp"
         android:textSize="@dimen/textView_fontSize"
         android:fontFamily="Arial"
-        android:textStyle="italic"
      />
 
 

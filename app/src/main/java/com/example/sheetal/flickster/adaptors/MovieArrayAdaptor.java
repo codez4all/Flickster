@@ -95,7 +95,7 @@ public class MovieArrayAdaptor extends ArrayAdapter<Movie> {
             if (type == 0)
             {
 
-                convertView = inflater.inflate(R.layout.movie_popular, parent, false);
+                convertView = inflater.inflate(R.layout.movie_item_popular, parent, false);
 
                 viewHolderPopular.imgPopular =(ImageView) convertView.findViewById(R.id.ivPopular);
 
@@ -104,7 +104,7 @@ public class MovieArrayAdaptor extends ArrayAdapter<Movie> {
             }
             else if(type == 1)
             {
-                convertView = inflater.inflate(R.layout.movie_item, parent, false);
+                convertView = inflater.inflate(R.layout.movie_item_regular, parent, false);
 
                 //find the image view ,text views
                 viewHolder.imgView = (ImageView) convertView.findViewById(R.id.ivImage);
@@ -141,24 +141,36 @@ public class MovieArrayAdaptor extends ArrayAdapter<Movie> {
             //Picasso.with(this.getContext()).load(movie.getPosterPath()).into(viewHolder.imgView);
             if(type == 0)
             {
-                Picasso.with(this.getContext()).load(movie.getBackdropPath()).centerCrop().resize(780,450).placeholder(R.mipmap.ic_movie_placeholder_error)
-                        .error(R.mipmap.ic_movie_placeholder_error).into(viewHolderPopular.imgPopular);
+                Picasso.with(this.getContext())
+                        .load(movie.getBackdropPath())
+                        .fit()
+                        .placeholder(R.drawable.video)
+                        .error(R.drawable.video)
+                        .into(viewHolderPopular.imgPopular);
 
             }
-            else if(type == 1) {
+            else if(type == LayOutTypes.PopularMovie.ordinal()) {
                  viewHolder.txtViewTitle.setText(movie.getOriginalTitle().toString());
                  viewHolder.txtViewOverview.setText(movie.getOverview().toString());
 
-                 Picasso.with(this.getContext()).load(movie.getPosterPath()).placeholder(R.mipmap.ic_movie_placeholder_error)
-                        .error(R.mipmap.ic_movie_placeholder_error).into(viewHolder.imgView);
+                 Picasso.with(this.getContext())
+                         .load(movie.getPosterPath())
+                         .fit()
+                         .placeholder(R.drawable.video)
+                         .error(R.drawable.video)
+                         .into(viewHolder.imgView);
             }
         }
         else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
             // Picasso.with(this.getContext()).load(movie.getBackdropPath()).into(viewHolder.imgView);
             if(type == 0)
             {
-                Picasso.with(this.getContext()).load(movie.getBackdropPath()).centerCrop().resize(1200,1000).placeholder(R.mipmap.ic_movie_placeholder_error)
-                        .error(R.mipmap.ic_movie_placeholder_error).into(viewHolderPopular.imgPopular);
+                Picasso.with(this.getContext())
+                        .load(movie.getBackdropPath())
+                        .fit()
+                        .placeholder(R.drawable.video)
+                        .error(R.drawable.video)
+                        .into(viewHolderPopular.imgPopular);
 
             }
             else if(type == 1) {
@@ -166,8 +178,12 @@ public class MovieArrayAdaptor extends ArrayAdapter<Movie> {
                 viewHolder.txtViewTitle.setText(movie.getOriginalTitle().toString());
                 viewHolder.txtViewOverview.setText(movie.getOverview().toString());
 
-                Picasso.with(this.getContext()).load(movie.getPosterPath()).placeholder(R.mipmap.ic_movie_placeholder_error)
-                        .error(R.mipmap.ic_movie_placeholder_error).into(viewHolder.imgView);
+                Picasso.with(this.getContext())
+                        .load(movie.getPosterPath())
+                        .fit()
+                        .placeholder(R.drawable.video)
+                        .error(R.drawable.video)
+                        .into(viewHolder.imgView);
             }
         }
 

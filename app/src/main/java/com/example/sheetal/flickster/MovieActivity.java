@@ -80,7 +80,7 @@ public class MovieActivity extends AppCompatActivity
                 }
                 else {
 
-                    Intent intentRating = new Intent(MovieActivity.this, RatingActivity.class);
+                    Intent intentRating = new Intent(MovieActivity.this, DetailActivity.class);
                     intentRating.putExtra("id",movie.getId());
                     intentRating.putExtra("title",movie.getOriginalTitle());
                     intentRating.putExtra("voteAverage", movie.getVoteAverage());

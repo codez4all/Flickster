@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:paddingBottom="@dimen/activity_vertical_margin"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin"
+              android:paddingTop="@dimen/activity_vertical_margin"
+              tools:context=".DetailActivity"
+              android:orientation="vertical"
+              android:background="@color/simple_grey"
+              android:paddingStart="@dimen/activity_vertical_margin"
+              android:paddingEnd="@dimen/activity_horizontal_margin">
+
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/playerOnDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/simple_grey">
+    </com.google.android.youtube.player.YouTubePlayerView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvTitle"
+        android:text="@string/tvTitleText"
+        android:layout_alignParentTop="true"
+        android:layout_below="@id/playerOnDetail"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:background="@color/simple_grey"
+        android:paddingTop="@dimen/item_paddingTop"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id= "@+id/tvReleaseDate"
+        android:text="@string/tvReleaseDateText"
+        android:layout_below="@id/tvTitle"
+        android:background="@color/simple_grey"
+        android:paddingTop="@dimen/item_paddingTop"/>
+
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rtBar"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvReleaseDate"
+        style="?android:attr/ratingBarStyleSmall"
+        android:isIndicator="true"
+        android:progressTint="@color/yellow"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tvSynopsisText"
+        android:id="@+id/tvSynopsis"
+        android:layout_below="@+id/tvPopularity"
+        android:layout_alignParentStart="true"
+        android:background="@color/simple_grey"
+        android:textColor="@color/grey"
+        android:paddingTop="10dp"
+        android:textSize="@dimen/textView_fontSize"
+        android:fontFamily="Arial"
+        />
+
+</LinearLayout>

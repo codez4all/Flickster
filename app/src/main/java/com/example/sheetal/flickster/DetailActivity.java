@@ -9,21 +9,14 @@ import android.widget.TextView;
 import com.example.sheetal.flickster.helpers.VideoPlayerHelper;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubePlayerView;
-import com.loopj.android.http.AsyncHttpClient;
 
-import org.json.JSONArray;
-
-public class RatingActivity extends YouTubeBaseActivity {
-
-    AsyncHttpClient client;
-    JSONArray videoJsonResult = null;
-    String source;
+public class DetailActivity extends YouTubeBaseActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rating);
+        setContentView(R.layout.activity_detail);
 
         TextView tvTitle = (TextView) findViewById(R.id.tvTitle);
         TextView tvReleaseDate = (TextView) findViewById(R.id.tvReleaseDate);
@@ -45,8 +38,6 @@ public class RatingActivity extends YouTubeBaseActivity {
 
         videoPlayerHelper.showVideo(id, playerOnDetailView);
         Log.d("DEBUG", "Youtube id:" + id);
-
-        //showVideo(id);
 
         tvTitle.setText(title);
         tvReleaseDate.setText(release_date);
