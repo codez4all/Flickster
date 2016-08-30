@@ -15,6 +15,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
+
 /**
  * Created by sheetal on 7/21/16.
  */
@@ -34,7 +36,7 @@ public class MovieArrayAdaptor extends ArrayAdapter<Movie> {
 
     }
 
-    private  static  class ViewHolderPopular
+    private static class ViewHolderPopular
     {
         ImageView imgPopular;
     }
@@ -138,7 +140,7 @@ public class MovieArrayAdaptor extends ArrayAdapter<Movie> {
 
         // with placeholder
         if(orientation == Configuration.ORIENTATION_PORTRAIT) {
-            //Picasso.with(this.getContext()).load(movie.getPosterPath()).into(viewHolder.imgView);
+
             if(type == 0)
             {
                 Picasso.with(this.getContext())
@@ -146,6 +148,7 @@ public class MovieArrayAdaptor extends ArrayAdapter<Movie> {
                         .fit()
                         .placeholder(R.drawable.video)
                         .error(R.drawable.video)
+                        .transform(new RoundedCornersTransformation(5,5))
                         .into(viewHolderPopular.imgPopular);
 
             }
@@ -158,11 +161,12 @@ public class MovieArrayAdaptor extends ArrayAdapter<Movie> {
                          .fit()
                          .placeholder(R.drawable.video)
                          .error(R.drawable.video)
+                         .transform(new RoundedCornersTransformation(5,5))
                          .into(viewHolder.imgView);
             }
         }
         else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            // Picasso.with(this.getContext()).load(movie.getBackdropPath()).into(viewHolder.imgView);
+
             if(type == 0)
             {
                 viewHolderPopular.imgPopular.getLayoutParams().height = 300;
@@ -172,6 +176,7 @@ public class MovieArrayAdaptor extends ArrayAdapter<Movie> {
                         .fit()
                         .placeholder(R.drawable.video)
                         .error(R.drawable.video)
+                        .transform(new RoundedCornersTransformation(5,5))
                         .into(viewHolderPopular.imgPopular);
 
             }
@@ -185,6 +190,7 @@ public class MovieArrayAdaptor extends ArrayAdapter<Movie> {
                         .fit()
                         .placeholder(R.drawable.video)
                         .error(R.drawable.video)
+                        .transform(new RoundedCornersTransformation(5,5))
                         .into(viewHolder.imgView);
             }
         }

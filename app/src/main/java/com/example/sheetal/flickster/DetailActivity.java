@@ -10,19 +10,22 @@ import com.example.sheetal.flickster.helpers.VideoPlayerHelper;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubePlayerView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class DetailActivity extends YouTubeBaseActivity {
 
+    @BindView(R.id.tvTitle) TextView tvTitle;
+    @BindView(R.id.tvReleaseDate) TextView tvReleaseDate;
+    @BindView(R.id.rtBar) RatingBar rtBar;
+    @BindView(R.id.tvSynopsis) TextView tvSynopsis;
+    @BindView(R.id.playerOnDetail) YouTubePlayerView playerOnDetailView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-
-        TextView tvTitle = (TextView) findViewById(R.id.tvTitle);
-        TextView tvReleaseDate = (TextView) findViewById(R.id.tvReleaseDate);
-        RatingBar rtBar = (RatingBar)findViewById(R.id.rtBar);
-        TextView tvSynopsis = (TextView) findViewById(R.id.tvSynopsis);
-        YouTubePlayerView playerOnDetailView = (YouTubePlayerView) findViewById(R.id.playerOnDetail);
+        ButterKnife.bind(this);
 
         Intent intent = getIntent();
 

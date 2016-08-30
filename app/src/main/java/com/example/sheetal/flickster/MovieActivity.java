@@ -21,6 +21,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
 
 public class MovieActivity extends AppCompatActivity
@@ -28,10 +30,10 @@ public class MovieActivity extends AppCompatActivity
 
     ArrayList<Movie> movies;
     MovieArrayAdaptor movieArrayAdaptor;
-    ListView lvItems;
+    @BindView(R.id.lvMovies) ListView lvItems;
     String url;
     AsyncHttpClient client;
-    private SwipeRefreshLayout swipeRefreshContainer;
+    @BindView(R.id.swipeContainer) SwipeRefreshLayout swipeRefreshContainer;
     RecyclerView rvItems;
 
 
@@ -40,11 +42,11 @@ public class MovieActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie);
-
+        ButterKnife.bind(this);
 
         movies = new ArrayList<>();
         movieArrayAdaptor = new MovieArrayAdaptor(this, movies);
-        lvItems = (ListView) findViewById(R.id.lvMovies);
+       // lvItems = (ListView) findViewById(R.id.lvMovies);
 
         lvItems.setAdapter(movieArrayAdaptor);
 
@@ -53,8 +55,6 @@ public class MovieActivity extends AppCompatActivity
         client = new AsyncHttpClient();
 
         fetchTimelineAsync();
-
-        swipeRefreshContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
 
         swipeRefreshContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
